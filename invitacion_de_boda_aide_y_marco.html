@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aide & Marco - Nuestra Boda Civil 2027</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#fdfbf7',
+                            300: '#e2d4be',
+                            400: '#d4af37',
+                            500: '#c59b27',
+                            600: '#a37b1e',
+                        },
+                        sage: {
+                            50: '#f4f6f4',
+                            100: '#e3e8e3',
+                            300: '#b4c3b4',
+                            600: '#5a735a',
+                            800: '#344534',
+                        },
+                        champagne: '#f8f5f0'
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        script: ['Pinyon Script', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Parallax & Scroll animations */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #a37b1e 0%, #d4af37 50%, #8a6514 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-gradient {
+            border-image: linear-gradient(135deg, #d4af37, #fdfbf7, #a37b1e) 1;
+        }
+
+        /* Floating music button pulse animation */
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+        }
+
+        .pulse-music {
+            animation: pulse-soft 3s infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8f5f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c59b27;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-champagne text-gray-800 font-sans selection:bg-gold-300 selection:text-sage-800 overflow-x-hidden">
+
+    <!-- Audio Element (Royalty Free Gentle Romantic Acoustic Guitar/Piano Ambient Track) -->
+    <audio id="wedding-audio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Floating Audio Control Button -->
+    <div class="fixed top-5 right-5 z-50">
+        <button id="music-btn" onclick="toggleAudio()" aria-label="Reproducir música de fondo" 
+            class="bg-white/80 backdrop-blur-md border border-gold-400 text-gold-600 p-3 rounded-full shadow-lg hover:bg-gold-400 hover:text-white transition-all duration-300 flex items-center gap-2 px-4 group pulse-music">
+            <i id="music-icon" class="fas fa-music text-lg group-hover:rotate-12 transition-transform"></i>
+            <span id="music-text" class="text-xs font-medium uppercase tracking-wider hidden sm:inline">Música</span>
+        </button>
+    </div>
+
+    <!-- HERO / COVER SECTION -->
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center p-6 overflow-hidden">
+        <!-- Background Pattern Overlay -->
+        <div class="absolute inset-0 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
+        
+        <!-- Elegant Frame Border -->
+        <div class="absolute inset-4 sm:inset-8 border border-gold-300/40 pointer-events-none rounded-lg"></div>
+        <div class="absolute inset-6 sm:inset-10 border border-gold-400/20 pointer-events-none rounded-lg"></div>
+
+        <div class="relative z-10 max-w-2xl mx-auto space-y-6 reveal-element active">
+            <span class="text-sage-600 uppercase tracking-[0.3em] text-xs sm:text-sm font-semibold">
+                ¡Nos Casamos al Civil!
+            </span>
+            
+            <h1 class="font-script text-6xl sm:text-8xl md:text-9xl gold-gradient-text py-2">
+                Aide & Marco
+            </h1>
+
+            <div class="w-24 h-px bg-gold-400 mx-auto my-4"></div>
+
+            <p class="font-serif italic text-lg sm:text-2xl text-sage-800 font-light px-4">
+                "Dos vidas, dos corazones, un solo camino que comenzamos a recorrer juntos."
+            </p>
+
+            <div class="pt-6">
+                <div class="inline-block border-y border-gold-400/60 py-3 px-8">
+                    <p class="font-serif text-xl sm:text-2xl tracking-widest uppercase text-gray-700">
+                        SÁBADO | <span class="font-bold text-gold-600">20 FEBRERO</span> | 2027
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-xs uppercase tracking-widest text-gray-500 pt-2">CDMX / Estado de México</p>
+        </div>
+
+        <!-- Scroll Indicator Down Arrow -->
+        <a href="#historia" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold-500 animate-bounce p-2">
+            <i class="fas fa-chevron-down text-xl"></i>
+        </a>
+    </header>
+
+    <!-- NUESTRA HISTORIA Y GALERÍA -->
+    <section id="historia" class="py-20 px-6 max-w-5xl mx-auto text-center">
+        <div class="reveal-element space-y-4 mb-12">
+            <span class="text-gold-600 font-script text-4xl sm:text-5xl">Uniendo historias</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-sage-800 tracking-wide uppercase">Nuestra Historia</h2>
+            <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+            <p class="max-w-xl mx-auto text-gray-600 font-light leading-relaxed pt-2">
+                Después de compartir grandes momentos, sonrisas y sueños, hemos decidido dar el siguiente gran paso en nuestras vidas ante la ley y junto a las personas que más amamos.
+            </p>
+        </div>
+
+        <!-- Interactive Photo Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-6">
+            <div class="reveal-element group relative overflow-hidden rounded-2xl shadow-md border-4 border-white aspect-[4/5] bg-sage-100">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" 
+                     alt="Foto Aide y Marco 1" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <p class="text-white text-sm font-serif italic">"El comienzo de nuestra gran aventura"</p>
+                </div>
+            </div>
+
+            <div class="reveal-element group relative overflow-hidden rounded-2xl shadow-md border-4 border-white aspect-[4/5] bg-sage-100 md:-translate-y-4">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" 
+                     alt="Foto Aide y Marco 2" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <p class="text-white text-sm font-serif italic">"Amor, complicidad y felicidad"</p>
+                </div>
+            </div>
+
+            <div class="reveal-element group relative overflow-hidden rounded-2xl shadow-md border-4 border-white aspect-[4/5] bg-sage-100 sm:col-span-2 md:col-span-1">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" 
+                     alt="Foto Aide y Marco 3" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <p class="text-white text-sm font-serif italic">"Por siempre juntos"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETALLES DEL EVENTO Y CUENTA REGRESIVA -->
+    <section class="py-20 bg-sage-50 border-y border-gold-300/30 px-6 relative">
+        <div class="max-w-4xl mx-auto text-center space-y-12">
+            
+            <div class="reveal-element space-y-3">
+                <span class="text-gold-600 font-script text-4xl">¿Cuánto falta?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-sage-800 tracking-wide uppercase">Cuenta Regresiva</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+            </div>
+
+            <!-- Countdown Timer Box -->
+            <div class="reveal-element grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gold-300/40">
+                    <span id="days" class="block font-serif text-3xl sm:text-5xl font-bold text-gold-600">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Días</span>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gold-300/40">
+                    <span id="hours" class="block font-serif text-3xl sm:text-5xl font-bold text-gold-600">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Horas</span>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gold-300/40">
+                    <span id="minutes" class="block font-serif text-3xl sm:text-5xl font-bold text-gold-600">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Minutos</span>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gold-300/40">
+                    <span id="seconds" class="block font-serif text-3xl sm:text-5xl font-bold text-gold-600">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Segundos</span>
+                </div>
+            </div>
+
+            <!-- Event Card Info -->
+            <div class="reveal-element bg-white p-8 sm:p-12 rounded-3xl shadow-lg border border-gold-300 max-w-2xl mx-auto space-y-6 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300"></div>
+                
+                <div class="w-16 h-16 bg-sage-50 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl border border-gold-300">
+                    <i class="fas fa-balance-scale-right"></i>
+                </div>
+
+                <h3 class="font-serif text-2xl sm:text-3xl text-sage-800 uppercase font-semibold">Ceremonia Civil</h3>
+                
+                <div class="space-y-2 text-gray-600">
+                    <p class="font-medium text-lg text-gray-800"><i class="far fa-calendar-alt text-gold-500 mr-2"></i> Sábado, 20 de Febrero de 2027</p>
+                    <p class="font-medium text-lg text-gray-800"><i class="far fa-clock text-gold-500 mr-2"></i> 13:30 hrs</p>
+                    <p class="pt-2"><i class="fas fa-map-marker-alt text-gold-500 mr-2"></i> Jardín & Salón "Las Luces"</p>
+                    <p class="text-sm text-gray-500">Av. De las Flores #123, Col. San Ángel, CDMX</p>
+                </div>
+
+                <div class="pt-4">
+                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 bg-sage-600 text-white px-6 py-3 rounded-full hover:bg-sage-800 transition-colors duration-300 shadow-md text-sm font-medium tracking-wide">
+                        <i class="fas fa-location-arrow"></i> Ver en Google Maps
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DRESS CODE & REGALOS -->
+    <section class="py-20 px-6 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+        
+        <!-- Dress Code Box -->
+        <div class="reveal-element bg-white p-8 rounded-2xl border border-gold-300/60 shadow-sm space-y-4">
+            <div class="w-12 h-12 bg-champagne text-gold-600 rounded-full flex items-center justify-center mx-auto text-xl">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h3 class="font-serif text-2xl text-sage-800 uppercase">Código de Vestimenta</h3>
+            <p class="text-gold-600 font-medium">Formal / Semi-Formal</p>
+            <p class="text-sm text-gray-500 leading-relaxed">
+                Queremos que luzcan espectaculares. Sugerimos trajes o trajes formales en tonos neutros/oscuros para caballeros y vestidos elegantes para damas.
+            </p>
+            <p class="text-xs text-rose-500 italic font-medium pt-2">* Reservamos el color blanco para la novia.</p>
+        </div>
+
+        <!-- Gift Registry Box -->
+        <div class="reveal-element bg-white p-8 rounded-2xl border border-gold-300/60 shadow-sm space-y-4">
+            <div class="w-12 h-12 bg-champagne text-gold-600 rounded-full flex items-center justify-center mx-auto text-xl">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h3 class="font-serif text-2xl text-sage-800 uppercase">Obsequios</h3>
+            <p class="text-gold-600 font-medium">Lluvia de Sobres</p>
+            <p class="text-sm text-gray-500 leading-relaxed">
+                Su presencia es nuestro mejor regalo. Si desean realizarnos un obsequio, contaremos con un buzón para sobres el día del evento o pueden apoyarnos en nuestra luna de miel.
+            </p>
+            <button onclick="toggleModal('bank-modal')" class="text-xs uppercase font-semibold text-gold-600 hover:text-gold-800 underline tracking-wider pt-2">
+                Ver Datos Bancarios
+            </button>
+        </div>
+
+    </section>
+
+    <!-- CONFIRMACIÓN DE ASISTENCIA (RSVP) VIA WHATSAPP -->
+    <section class="py-20 bg-white border-t border-gold-300/30 px-6">
+        <div class="max-w-xl mx-auto text-center space-y-8">
+            
+            <div class="reveal-element space-y-3">
+                <span class="text-gold-600 font-script text-4xl">Nos encantara verte</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-sage-800 tracking-wide uppercase">Confirmar Asistencia</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+                <p class="text-sm text-gray-500">Por favor confirma tu asistencia antes del 15 de Enero de 2027.</p>
+            </div>
+
+            <!-- Interactive Form -->
+            <form id="rsvp-form" onsubmit="sendWhatsAppRSVP(event)" class="reveal-element space-y-5 text-left bg-champagne p-6 sm:p-8 rounded-3xl border border-gold-300/40">
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-gray-600 mb-2">Nombre Completo *</label>
+                    <input type="text" id="guest-name" required placeholder="Ej. Ana María García" 
+                           class="w-full px-4 py-3 rounded-xl border border-gold-300 focus:outline-none focus:ring-2 focus:ring-gold-400 bg-white text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-gray-600 mb-2">¿Asistirás a la celebración? *</label>
+                    <select id="attendance" required class="w-full px-4 py-3 rounded-xl border border-gold-300 focus:outline-none focus:ring-2 focus:ring-gold-400 bg-white text-sm">
+                        <option value="Sí, con mucho gusto asistiré">¡Sí! Ahí estaré con mucho gusto</option>
+                        <option value="Lo siento, no podré asistir">Lamentablemente no podré asistir</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-gray-600 mb-2">Número de Pases Confirmados</label>
+                    <select id="passes" class="w-full px-4 py-3 rounded-xl border border-gold-300 focus:outline-none focus:ring-2 focus:ring-gold-400 bg-white text-sm">
+                        <option value="1 Persona (Individual)">1 Persona</option>
+                        <option value="2 Personas (Pareja)">2 Personas</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-gray-600 mb-2">Mensaje o Felicitaciones (Opcional)</label>
+                    <textarea id="message" rows="3" placeholder="Escribe unas palabras para Aide y Marco..." 
+                              class="w-full px-4 py-3 rounded-xl border border-gold-300 focus:outline-none focus:ring-2 focus:ring-gold-400 bg-white text-sm"></textarea>
+                </div>
+
+                <button type="submit" 
+                        class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3.5 px-6 rounded-xl transition-colors duration-300 shadow-md flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
+                    <i class="fab fa-whatsapp text-lg"></i> Enviar Confirmación por WhatsApp
+                </button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-sage-800 text-champagne text-center px-6 space-y-4">
+        <p class="font-script text-4xl text-gold-300">Aide & Marco</p>
+        <p class="text-xs uppercase tracking-widest text-sage-300">Gracias por ser parte de nuestra historia</p>
+        <p class="text-[10px] text-sage-300/60 pt-4">© 2027 • Invitación Digital Boda Civil</p>
+    </footer>
+
+    <!-- BANK DETAILS MODAL -->
+    <div id="bank-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-4 relative shadow-2xl">
+            <button onclick="toggleModal('bank-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h4 class="font-serif text-2xl text-sage-800 font-semibold text-center">Datos Bancarios</h4>
+            <div class="w-12 h-0.5 bg-gold-400 mx-auto"></div>
+            <div class="space-y-3 text-sm text-gray-600 bg-champagne p-4 rounded-xl border border-gold-300/40">
+                <p><strong>Banco:</strong> BBVA México</p>
+                <p><strong>Titular:</strong> Marco / Aide</p>
+                <p><strong>CLABE Interbancaria:</strong> 012 180 0000000000 0</p>
+                <p><strong>Cuenta:</strong> 1234567890</p>
+            </div>
+            <button onclick="copyToClipboard('012180000000000000')" class="w-full bg-gold-500 hover:bg-gold-600 text-white py-2.5 rounded-xl text-xs uppercase font-semibold tracking-wider transition-colors">
+                <i class="far fa-copy mr-2"></i> Copiar CLABE
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CODE -->
+    <script>
+        // 1. AUDIO PLAYER LOGIC
+        const audio = document.getElementById('wedding-audio');
+        const musicBtn = document.getElementById('music-btn');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.className = 'fas fa-music text-lg';
+                musicBtn.classList.remove('bg-gold-500', 'text-white');
+            } else {
+                audio.play().then(() => {
+                    musicIcon.className = 'fas fa-pause text-lg';
+                    musicBtn.classList.add('bg-gold-500', 'text-white');
+                }).catch(e => console.log("Audio play blocked by browser:", e));
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // 2. COUNTDOWN TIMER (FEBRERO 20, 2027)
+        const weddingDate = new Date('February 20, 2027 13:30:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').innerText = "00";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 3. SCROLL REVEAL ANIMATIONS (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-element').forEach(el => observer.observe(el));
+
+        // 4. RSVP WHATSAPP REDIRECT
+        function sendWhatsAppRSVP(event) {
+            event.preventDefault();
+            
+            // Reemplazar con el número de teléfono real de Aide o Marco (con código de país, ej. 521XXXXXXXXXX)
+            const phoneNumber = "5215500000000"; 
+            
+            const name = document.getElementById('guest-name').value;
+            const attendance = document.getElementById('attendance').value;
+            const passes = document.getElementById('passes').value;
+            const message = document.getElementById('message').value;
+
+            let text = `*CONFIRMACIÓN DE ASISTENCIA - BODA AIDE Y MARCO*%0A%0A`;
+            text += `*Nombre:* ${name}%0A`;
+            text += `*Asistencia:* ${attendance}%0A`;
+            text += `*Pases:* ${passes}%0A`;
+            if (message) {
+                text += `*Mensaje:* ${message}%0A`;
+            }
+
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${text}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // 5. MODAL TOGGLE & COPY UTILITY
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+
+        function copyToClipboard(text) {
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            alert("¡CLABE copiada al portapapeles!");
+        }
+    </script>
+</body>
+</html>
